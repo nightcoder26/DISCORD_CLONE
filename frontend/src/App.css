@@ -1,0 +1,11 @@
+.main {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  /* height: 100vh; */
+  background-color: #f0f0f0;
+  flex-direction: row;
+  /*thik height: yes; app.css empty krna acha h only fonts and bg */
+  flex: 0 0 200px;
+  margin: 0;
+}
