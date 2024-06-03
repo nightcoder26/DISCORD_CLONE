@@ -15,10 +15,13 @@ const ServerName = () => {
             className="discord_logo"
           />
         </div>
+        <hr width={40}></hr>
         <div className="serverList">
           <ul>
             {servers.map((server, index) => (
-              <li key={index}>{server}</li>
+              <div className="servers">
+                <li key={index}>{server}</li>
+              </div>
             ))}
           </ul>
         </div>
