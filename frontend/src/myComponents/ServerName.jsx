@@ -1,8 +1,18 @@
 import React from "react";
 import "../componentsCss/serverName.css";
 import discord_logo from "../assets/discord_icon.png";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setSelectedServer } from "../features/categorSlice";
+
 const ServerName = () => {
-  const servers = ["Server1", "Server2", "Server3", "Server4", "Server5"];
+  const dispatch = useDispatch();
+  const serverList = useSelector((state) => state.servers.serverList);
+
+  const handleServerClick = (server) => {
+    console.log(server);
+    dispatch(setSelectedServer(server));
+  };
   return (
     <>
       <div className="mainList">
@@ -18,10 +28,16 @@ const ServerName = () => {
         <hr width={40}></hr>
         <div className="serverList">
           <ul>
-            {servers.map((server, index) => (
-              <div className="servers">
-                <li key={index}>{server}</li>
-              </div>
+            {Object.keys(serverList).map((server) => (
+              <li
+                key={server}
+                className="servers"
+                onClick={() => {
+                  handleServerClick(serverList[server]);
+                }}
+              >
+                {serverList[server]}
+              </li>
             ))}
           </ul>
         </div>
