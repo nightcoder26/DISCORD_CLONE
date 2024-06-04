@@ -10,6 +10,7 @@ function App() {
     <>
       <div className="main">
         <ServerName />
+        <h1>Server Information</h1>
         <ServerInfo />
         <ServerContent />
       </div>
