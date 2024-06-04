@@ -39,6 +39,7 @@
   width: 50px;
   list-style-type: none;
   margin: 4px;
+  word-wrap: break-word;
 }
 .servers:hover,
 .discord_logo:hover {

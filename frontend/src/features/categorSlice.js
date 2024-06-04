@@ -90,6 +90,16 @@ const initialState = {
   },
   serverList: ["SamayRaina", "Server2", "Server3", "Server4", "Server5"],
   selectedServer: "SamayRaina",
+  email: "here",
+  password: "abc",
+  users: [
+    {
+      email: "here",
+      password: "abc",
+      displayName: "Samay Raina",
+      username: "SamayRaina",
+    },
+  ],
 };
 
 const serverSlice = createSlice({
@@ -107,11 +117,21 @@ const serverSlice = createSlice({
     setSelectedServer: (state, action) => {
       state.selectedServer = action.payload;
     },
+    login: (state, action) => {
+      state.email = action.payload.email;
+      state.password = action.payload.password;
+      // ye login h push nhi krni we need store only who is logged in
+      //signup alag krke wo push krenge
+      //styling krni ok
+    },
+    signup: (state, action) => {
+      state.users.push(action.payload);
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addServer, deleteServer, setSelectedServer } =
+export const { addServer, deleteServer, setSelectedServer, login, signup } =
   serverSlice.actions;
 
 export default serverSlice.reducer;
