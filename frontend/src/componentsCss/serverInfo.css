@@ -121,3 +121,30 @@
   background-color: #35373c;
   color: #ffffff;
 }
+.userInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  color: #f0f0f0;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  border-top: 3px solid #37393f;
+}
+.user-icons {
+  font-size: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  padding: 4px;
+}
+
+.user-pfp {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
