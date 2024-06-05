@@ -3,6 +3,7 @@ import "../componentsCss/loginSignup.css";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../features/categorSlice";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -49,6 +50,9 @@ const SignUp = () => {
               value={username}
               onChange={handleUsernameChange}
             ></input>
+            <p className="username" style={{ color: "#FF0000" }}>
+              USERNAME SHOULD BE UNIQUE
+            </p>
             <label>PASSWORD</label>
             <input
               type="password"
@@ -74,7 +78,7 @@ const SignUp = () => {
 
           <div className="register">
             <p>
-              <a href="#">Already have an account? </a>
+              <Link to="/">Already have an account? </Link>
             </p>
           </div>
         </div>
