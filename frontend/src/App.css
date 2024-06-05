@@ -8,3 +8,17 @@
   /*thik height: yes; app.css empty krna acha h only fonts and bg */
   flex: 0 0 200px;
 }
+
+.login-again {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #2a30ad;
+}
+
+.login-again a {
+  color: white;
+  font-size: 20px;
+  font-weight: 900;
+}
