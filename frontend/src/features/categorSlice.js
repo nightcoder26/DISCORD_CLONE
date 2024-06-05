@@ -89,6 +89,13 @@ const initialState = {
     },
   },
   serverList: ["SamayRaina", "Server2", "Server3", "Server4", "Server5"],
+  // userServerList: {
+  //   username: "bhavitha",
+  //   servers: ["SamayRaina", "Server2", "Server3", "Server4", "Server5"],
+  // },
+  // ye ek hee user ka h? no ye ek hee object h  so ye ek hee object h? jo logged user h uska? to access easy hoga aisa koina same hee rehta h bs thoda more organised
+  // when they login u will change the username above and then make their servers empty when they join they will have servers wo aise bhi kr skte h na
+
   selectedServer: "SamayRaina",
   email: "here",
   password: "abc",
@@ -99,7 +106,14 @@ const initialState = {
       displayName: "Samay Raina",
       username: "SamayRaina",
     },
+    {
+      email: "there",
+      password: "def",
+      displayName: "Bhavitha",
+      username: "Bhavitha",
+    },
   ],
+  loggedUser: "SamayRaina",
 };
 
 const serverSlice = createSlice({
@@ -123,6 +137,19 @@ const serverSlice = createSlice({
       // ye login h push nhi krni we need store only who is logged in
       //signup alag krke wo push krenge
       //styling krni ok
+      if (
+        state.users.find(
+          (user) =>
+            user.email === state.email && user.password === state.password
+        )
+      ) {
+        state.loggedUser = state.users.find(
+          (user) =>
+            user.email === state.email && user.password === state.password
+        ).username;
+        // state.userServerList.username = state.loggedUser;
+        // state.userServerList.servers = ["Server2", "Server3"];
+      }
     },
     signup: (state, action) => {
       state.users.push(action.payload);
