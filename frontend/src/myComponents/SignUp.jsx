@@ -3,23 +3,51 @@ import "../componentsCss/loginSignup.css";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../features/categorSlice";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [username, setUsername] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [usernameError, setUsernameError] = useState("");
   const store_users = useSelector((state) => state.servers.users);
-
+  const store_userServerList = useSelector(
+    (state) => state.servers.userServerList
+  );
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const handleSignUp = (e) => {
+
+  const handleSignUp = async (e) => {
     e.preventDefault();
-    dispatch(signup({ email, password, displayName, username }));
+
+    // Check if email or username is already in use
+    const isEmailTaken = store_users.some((user) => user.email === email);
+    const isUsernameTaken = store_userServerList.some(
+      (user) => user.username === username
+    );
+
+    if (isEmailTaken) {
+      setEmailError("Email is already in use. Please choose another.");
+    } else {
+      setEmailError("");
+    }
+
+    if (isUsernameTaken) {
+      setUsernameError("Username is already in use. Please choose another.");
+    } else {
+      setUsernameError("");
+    }
+
+    if (!isEmailTaken && !isUsernameTaken) {
+      await dispatch(signup({ email, password, displayName, username }));
+      navigate("/");
+    }
   };
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-  };
+  }; // charge itni jaldi drain hogyi
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
@@ -38,21 +66,31 @@ const SignUp = () => {
           <form onSubmit={handleSignUp} className="actual-form">
             <label>EMAIL</label>
             <input type="text" value={email} onChange={handleEmailChange} />
+            {emailError && (
+              <p className="error" style={{ color: "#FF0000" }}>
+                {emailError}
+              </p>
+            )}
             <label>DISPLAY NAME</label>
             <input
               type="text"
               value={displayName}
               onChange={handleDisplayChange}
             ></input>
-            <label>USERNAME</label>
+            <label>USERNAME(USERNAME SHOULD BE UNIQUE)</label>
             <input
               type="text"
               value={username}
               onChange={handleUsernameChange}
             ></input>
-            <p className="username" style={{ color: "#FF0000" }}>
+            {usernameError && (
+              <p className="error" style={{ color: "#FF0000" }}>
+                {usernameError}
+              </p>
+            )}
+            {/* <p className="username" style={{ color: "#FFF" }}>
               USERNAME SHOULD BE UNIQUE
-            </p>
+            </p> */}
             <label>PASSWORD</label>
             <input
               type="password"
@@ -64,16 +102,16 @@ const SignUp = () => {
             <button type="submit">Continue</button>
           </form>
           <div>
-            {/* <ul>
-              {store_users.map((user, index) => (
-                <li key={index}>
-                  <p>Email: {user.email}</p>
-                  <p>Password: {user.password}</p>
-                  <p>Display Name: {user.displayName}</p>
-                  <p>Username: {user.username}</p>
-                </li>
-              ))}
-            </ul> */}
+            {/* {store_userServerList.map((user) => {
+              return (
+                <div>
+                  {user.username}
+                  {user.servers.map((server) => {
+                    return <div>{server}</div>;
+                  })}
+                </div>
+              );
+            })} */}
           </div>
 
           <div className="register">

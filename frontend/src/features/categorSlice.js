@@ -89,10 +89,13 @@ const initialState = {
     },
   },
   serverList: ["SamayRaina", "Server2", "Server3", "Server4", "Server5"],
-  // userServerList: {
-  //   username: "bhavitha",
-  //   servers: ["SamayRaina", "Server2", "Server3", "Server4", "Server5"],
-  // },
+  userServerList: [
+    { username: "SamayRaina", servers: ["Server2", "Server3", "server4"] },
+    {
+      username: "Bhavitha",
+      servers: ["Server2", "Server3"],
+    },
+  ],
   // ye ek hee user ka h? no ye ek hee object h  so ye ek hee object h? jo logged user h uska? to access easy hoga aisa koina same hee rehta h bs thoda more organised
   // when they login u will change the username above and then make their servers empty when they join they will have servers wo aise bhi kr skte h na
 
@@ -153,6 +156,10 @@ const serverSlice = createSlice({
     },
     signup: (state, action) => {
       state.users.push(action.payload);
+      const newUser = { username: action.payload.username, servers: [] };
+      // if user already exists
+
+      state.userServerList.push(newUser);
     },
   },
 });
