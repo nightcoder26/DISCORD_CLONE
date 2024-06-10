@@ -6,18 +6,26 @@ import { IoMdSettings } from "react-icons/io";
 import { TbHeadphonesOff } from "react-icons/tb";
 import discord_logo from "../assets/discord_icon.png";
 function ServerInfo() {
-  const servers = useSelector((state) => state.servers.servers);
+  //hm sory nhi chiye bas selectedserver chihye usse servers object ka info haina
   const selectedServer = useSelector((state) => state.servers.selectedServer);
   console.log(selectedServer);
-  const selectedServerInfo = servers[selectedServer];
+  const selectedServerInfo = useSelector(
+    (state) =>
+      state.servers.servers.find(
+        (server) => server.serverName === selectedServer
+      ) //fixed
+  );
+  //bas whi chihye
+  console.log(selectedServerInfo);
   const username = useSelector((state) => state.servers.loggedUser);
   console.log(selectedServerInfo);
+
   // const serverList = useSelector((state) => state.servers.serverList);
   return (
     <div className="serverInfo">
       <div className="server-name">Server name</div>
       <div className="info">
-        {Object.entries(selectedServerInfo).map(([category, channels]) => (
+        {/* {Object.entries(selectedServerInfo).map(([category, channels]) => (
           <div key={category} className="channelCategory">
             <p className="categoryName">{category}</p>
             <ul className="channel-list">
@@ -28,7 +36,7 @@ function ServerInfo() {
               ))}
             </ul>
           </div>
-        ))}
+        ))} */}
       </div>
       <div className="userInfo">
         <img src={discord_logo} className="user-pfp" />

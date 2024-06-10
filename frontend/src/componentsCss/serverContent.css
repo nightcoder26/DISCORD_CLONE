@@ -1,97 +1,110 @@
 .serverContent {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* margin-top: 10px;
-    margin-bottom: 10px; responsiveness? */
-  /* padding: 10px; */
   height: 100vh;
   background-color: #313338;
-  /* min-width: 78vw; */
   flex: 1;
-
-  /* width: 100%; */
+  width: 100%;
 }
 
 .channelName {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 24px;
   padding: 12px 16px;
-  border-bottom: #1f2023;
+  border-bottom: 1px solid #1f2023;
   box-shadow: 0 1px 0 0 #000000;
   width: 100%;
-
-  /* justify-content: center; */
-  /* align-items: center; */
   color: #f0f0f0;
   font-size: medium;
 }
+
 .channelDesc {
   color: #80848e;
 }
+
 .channelLogo {
   border-radius: 50%;
 }
+
 .channelContent {
   display: flex;
-  flex: 1; /* Take up remaining space between server-name and userInfo */
-  width: 100%; /* Ensure it takes full width of the container */
-  padding: 3px;
-  color: #f0f0f0; /* Optional: Font color to match the theme */
-  word-wrap: break-word; /* Ensure long words break to the next line */
-  box-sizing: border-box; /* Ensure padding is included in total width */
-  overflow-y: auto; /* Enable vertical scrolling */
+  flex: 1;
+  width: 100%;
+  padding: 20px;
+  color: #f0f0f0;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  overflow-y: auto;
   flex-direction: column-reverse;
+  background-color: #2f3136;
 }
 
 .channelContent::-webkit-scrollbar {
-  width: 10px; /* Set the width of the scrollbar */
+  width: 10px;
 }
 
 .channelContent::-webkit-scrollbar-track {
-  background-color: #2b2d31; /* Set the background color of the scrollbar track */
+  background-color: #2b2d31;
 }
 
 .channelContent::-webkit-scrollbar-thumb {
-  background-color: #2b2d31; /* Set the color of the scrollbar thumb */
-  border-radius: 5px; /* Add rounded corners to the scrollbar thumb */
+  background-color: #2b2d31;
+  border-radius: 5px;
 }
 
 .channelContent::-webkit-scrollbar-thumb:hover {
-  background-color: #1a1b1e; /* Set the color of the scrollbar thumb on hover */
+  background-color: #1a1b1e;
 }
 
 .chats {
   flex: 1;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
+
+.chatMessage {
+  background-color: #40444b;
+  padding: 10px;
+  border-radius: 5px;
+}
+
 .messageInput {
   display: flex;
-  /* height: 44px; */
-  width: 100%; /* Ensure it takes full width of the container */
+  width: 100%;
   justify-content: center;
   align-items: center;
-  /* padding: 16px; */
   padding: 16px;
-  color: #f0f0f0; /* Optional: Font color to match the theme */
-  word-wrap: break-word; /* Ensure long words break to the next line */
-  box-sizing: border-box; /* Ensure padding is included in total width */
-  /* border-top: 3px solid #37393f;  */
+  background-color: #37393f;
+  box-sizing: border-box;
 }
 
 .messageInput input {
   height: 44px;
   width: 100%;
-
   border: none;
   background-color: #383a40;
   color: #f0f0f0;
   border-radius: 5px;
-  line-height: 4px;
-  margin: 1px;
+  padding: 10px;
+  margin-right: 10px;
 }
 
 .messageInput input:focus {
   outline: none;
+}
+
+.messageInput button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #7289da;
+  color: white;
+  cursor: pointer;
+}
+
+.messageInput button:hover {
+  background-color: #677bc4;
 }
