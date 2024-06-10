@@ -27,7 +27,7 @@ const LoginSignup = () => {
         navigate("/app");
       }
     }
-  }, [loggedUser, navigate]);
+  }, [loggedUser, navigate]); //yha bhejri  ig login baad hee
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);

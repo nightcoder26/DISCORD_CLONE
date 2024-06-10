@@ -1,14 +1,32 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addMessage } from "../serverSlice";
 import "../componentsCss/serverContent.css";
 import logo from "../assets/discord_icon.png";
 
 function ServerContent() {
-  const [messages, setMessages] = useState([]);
+  const dispatch = useDispatch();
+  const selectedServer = useSelector((state) => state.servers.selectedServer);
+  const selectedChannel = useSelector((state) => state.servers.selectedChannel);
+  const channels = useSelector(
+    (state) => state.servers.servers[selectedServer]
+  );
   const [newMessage, setNewMessage] = useState("");
+
+  const currentChannel = Object.values(channels)
+    .flat()
+    .find((channel) => channel.id === selectedChannel);
+  const messages = currentChannel ? currentChannel.messages : [];
 
   const handleSendMessage = () => {
     if (newMessage.trim()) {
-      setMessages([...messages, newMessage]);
+      dispatch(
+        addMessage({
+          serverName: selectedServer,
+          channelId: selectedChannel,
+          message: newMessage,
+        })
+      );
       setNewMessage("");
     }
   };
@@ -16,11 +34,18 @@ function ServerContent() {
   return (
     <div className="serverContent">
       <div className="channelName">
-        Channel name |<div className="channelDesc">Channel Description</div>
+        {currentChannel?.name || "Channel name"} |
+        <div className="channelDesc">Channel Description</div>
       </div>
       <div className="channelContent">
         <div className="welcome">
-          <img src={logo} width={60} height={60} className="channelLogo" />
+          <img
+            src={logo}
+            width={60}
+            height={60}
+            className="channelLogo"
+            alt="Channel Logo"
+          />
           Welcome to the channel! Start by sending a message or a file!
         </div>
         <div className="chats">
