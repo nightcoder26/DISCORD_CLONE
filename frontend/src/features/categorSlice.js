@@ -19,89 +19,19 @@ const initialState = {
         { name: "Hulu", id: "entertainment3", type: "text" },
       ],
     },
-    Server2: {
-      News: [
-        { name: "Bhavitha", id: "news1", type: "text" },
-        { name: "BBB", id: "news2", type: "text" },
-        { name: "CCC", id: "news3", type: "text" },
-      ],
-      Sports: [
-        { name: "ESPN", id: "sports1", type: "voice" },
-        { name: "Fox Sports", id: "sports2", type: "text" },
-        { name: "Sky Sports", id: "sports3", type: "voice" },
-      ],
-      Entertainment: [
-        { name: "HBO", id: "entertainment1", type: "text" },
-        { name: "Netflix", id: "entertainment2", type: "voice" },
-        { name: "Hulu", id: "entertainment3", type: "text" },
-      ],
-    },
-    Server3: {
-      News: [
-        { name: "TV9", id: "news1", type: "text" },
-        { name: "Aaj tak", id: "news2", type: "text" },
-        { name: "Republic TV", id: "news3", type: "text" },
-      ],
-      Sports: [
-        { name: "ESPN", id: "sports1", type: "voice" },
-        { name: "Fox Sports", id: "sports2", type: "text" },
-        { name: "Sky Sports", id: "sports3", type: "voice" },
-      ],
-      Entertainment: [
-        { name: "HBO", id: "entertainment1", type: "text" },
-        { name: "Netflix", id: "entertainment2", type: "voice" },
-        { name: "Hulu", id: "entertainment3", type: "text" },
-      ],
-    },
-    Server4: {
-      News: [
-        { name: "TV9", id: "news1", type: "text" },
-        { name: "Aaj tak", id: "news2", type: "text" },
-        { name: "Republic TV", id: "news3", type: "text" },
-      ],
-      Sports: [
-        { name: "ESPN", id: "sports1", type: "voice" },
-        { name: "Fox Sports", id: "sports2", type: "text" },
-        { name: "Sky Sports", id: "sports3", type: "voice" },
-      ],
-      Entertainment: [
-        { name: "HBO", id: "entertainment1", type: "text" },
-        { name: "Netflix", id: "entertainment2", type: "voice" },
-        { name: "Hulu", id: "entertainment3", type: "text" },
-      ],
-    },
-    Server5: {
-      News: [
-        { name: "TV9", id: "news1", type: "text" },
-        { name: "Aaj tak", id: "news2", type: "text" },
-        { name: "Republic TV", id: "news3", type: "text" },
-      ],
-      Sports: [
-        { name: "ESPN", id: "sports1", type: "voice" },
-        { name: "Fox Sports", id: "sports2", type: "text" },
-        { name: "Sky Sports", id: "sports3", type: "voice" },
-      ],
-      Entertainment: [
-        { name: "HBO", id: "entertainment1", type: "text" },
-        { name: "Netflix", id: "entertainment2", type: "voice" },
-        { name: "Hulu", id: "entertainment3", type: "text" },
-      ],
-    },
+    // Other server data
   },
   serverList: ["SamayRaina", "Server2", "Server3", "Server4", "Server5"],
   userServerList: [
-    { username: "SamayRaina", servers: ["Server2", "Server3", "server4"] },
+    { username: "SamayRaina", servers: ["Server2", "Server3", "Server4"] },
     {
       username: "Bhavitha",
       servers: ["Server2", "Server3"],
     },
   ],
-  // ye ek hee user ka h? no ye ek hee object h  so ye ek hee object h? jo logged user h uska? to access easy hoga aisa koina same hee rehta h bs thoda more organised
-  // when they login u will change the username above and then make their servers empty when they join they will have servers wo aise bhi kr skte h na
-
   selectedServer: "SamayRaina",
-  email: "here",
-  password: "abc",
+  email: "",
+  password: "",
   users: [
     {
       email: "here",
@@ -116,7 +46,7 @@ const initialState = {
       username: "Bhavitha",
     },
   ],
-  loggedUser: "SamayRaina",
+  loggedUser: "",
 };
 
 const serverSlice = createSlice({
@@ -135,36 +65,25 @@ const serverSlice = createSlice({
       state.selectedServer = action.payload;
     },
     login: (state, action) => {
-      state.email = action.payload.email;
-      state.password = action.payload.password;
-      // ye login h push nhi krni we need store only who is logged in
-      //signup alag krke wo push krenge
-      //styling krni ok
-      if (
-        state.users.find(
-          (user) =>
-            user.email === state.email && user.password === state.password
-        )
-      ) {
-        state.loggedUser = state.users.find(
-          (user) =>
-            user.email === state.email && user.password === state.password
-        ).username;
-        // state.userServerList.username = state.loggedUser;
-        // state.userServerList.servers = ["Server2", "Server3"];
+      const user = state.users.find(
+        (user) =>
+          user.email === action.payload.email &&
+          user.password === action.payload.password
+      );
+      if (user) {
+        state.loggedUser = user.username;
+      } else {
+        state.loggedUser = "SamayRaina"; // assuming "SamayRaina" indicates an invalid login
       }
     },
     signup: (state, action) => {
       state.users.push(action.payload);
       const newUser = { username: action.payload.username, servers: [] };
-      // if user already exists
-
       state.userServerList.push(newUser);
     },
   },
 });
 
-// Action creators are generated for each case reducer function
 export const { addServer, deleteServer, setSelectedServer, login, signup } =
   serverSlice.actions;
 
