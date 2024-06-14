@@ -3,7 +3,6 @@
   flex-direction: column;
   height: 100vh;
   background-color: #313338;
-  flex: 1;
   width: 100%;
 }
 
@@ -30,14 +29,13 @@
 
 .channelContent {
   display: flex;
+  flex-direction: column;
   flex: 1;
-  width: 100%;
   padding: 20px;
   color: #f0f0f0;
   word-wrap: break-word;
   box-sizing: border-box;
   overflow-y: auto;
-  flex-direction: column-reverse;
   background-color: #2f3136;
 }
 
@@ -58,6 +56,19 @@
   background-color: #1a1b1e;
 }
 
+.welcome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-top: auto; /* Initial state: at the bottom */
+  transition: margin-top 0.3s ease-in-out;
+}
+
+.welcome.top {
+  margin-top: 0; /* Move to the top */
+}
+
 .chats {
   flex: 1;
   display: flex;
@@ -69,21 +80,26 @@
   background-color: #40444b;
   padding: 10px;
   border-radius: 5px;
+  max-width: 70%;
+  align-self: flex-start; /* Align messages to the left by default */
+}
+
+.chatMessage.right {
+  align-self: flex-end; /* Align user's messages to the right */
 }
 
 .messageInput {
   display: flex;
   width: 100%;
-  justify-content: center;
-  align-items: center;
   padding: 16px;
   background-color: #37393f;
   box-sizing: border-box;
+  align-items: center;
 }
 
 .messageInput input {
+  flex: 1;
   height: 44px;
-  width: 100%;
   border: none;
   background-color: #383a40;
   color: #f0f0f0;

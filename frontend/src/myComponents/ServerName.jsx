@@ -8,11 +8,12 @@ import { setSelectedServer } from "../features/categorSlice";
 const ServerName = () => {
   const dispatch = useDispatch();
   const loggedUser = useSelector((state) => state.servers.loggedUser);
-  const serverList = useSelector((state) => {
+  {/*const serverList = useSelector((state) => {
     return state.servers.userServerList.filter(
       (user) => user.username === loggedUser
     );
-  });
+  });*/}
+  const serverList = useSelector(state => state.servers.userServerList[loggedUser]?.servers || []);
 
   //apka dikha
 
@@ -21,7 +22,7 @@ const ServerName = () => {
   //just display ke lie thi ye
   //servers bas haa sory
   const handleServerClick = (server) => {
-    console.log(server);
+    
     dispatch(setSelectedServer(server));
   };
   return (

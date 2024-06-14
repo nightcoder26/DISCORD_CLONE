@@ -15,90 +15,133 @@ const initialState = {
       username: "Bhavitha",
     },
   ],
-  userServerList: [
-    { username: "SamayRaina", servers: ["Server2", "Server3", "Server4"] },
-    { username: "Bhavitha", servers: ["Server2", "Server3"] },
-  ],
-
-  servers: [
-    {
-      serverName: "SamayRaina",
+  userServerList: {
+    SamayRaina: { servers: ["Server2", "Server3", "Server4"] },
+    Bhavitha: { servers: ["Server2", "Server3"] },
+  },
+  servers: {
+    SamayRaina: {
       categories: [
         {
           categoryName: "News",
           channels: [
-            { name: "chess", id: "news1", type: "text", messages: [] },
-            { name: "stream", id: "news2", type: "text", messages: [] },
-            { name: "stand up", id: "news3", type: "text", messages: [] },
+            { name: "chess", id: "news1", type: "text" },
+            { name: "stream", id: "news2", type: "text" },
+            { name: "stand up", id: "news3", type: "text" },
           ],
         },
         {
           categoryName: "Sports",
           channels: [
-            { name: "ESPN", id: "sports1", type: "voice", messages: [] },
-            { name: "Fox Sports", id: "sports2", type: "text", messages: [] },
-            { name: "Sky Sports", id: "sports3", type: "voice", messages: [] },
+            { name: "ESPN", id: "sports1", type: "voice" },
+            { name: "Fox Sports", id: "sports2", type: "text" },
+            { name: "Sky Sports", id: "sports3", type: "voice" },
           ],
         },
         {
           categoryName: "Entertainment",
           channels: [
-            { name: "HBO", id: "entertainment1", type: "text", messages: [] },
-            {
-              name: "Netflix",
-              id: "entertainment2",
-              type: "voice",
-              messages: [],
-            },
-            { name: "Hulu", id: "entertainment3", type: "text", messages: [] },
+            { name: "HBO", id: "entertainment1", type: "text" },
+            { name: "Netflix", id: "entertainment2", type: "voice" },
+            { name: "Hulu", id: "entertainment3", type: "text" },
           ],
         },
       ],
     },
-    {
-      serverName: "Server2",
+    Server2: {
       categories: [
         {
           categoryName: "News",
           channels: [
-            { name: "chess", id: "news1", type: "text", messages: [] },
-            { name: "stream", id: "news2", type: "text", messages: [] },
-            { name: "stand up", id: "news3", type: "text", messages: [] },
+            { name: "chess", id: "news1", type: "text" },
+            { name: "stream", id: "news2", type: "text" },
+            { name: "stand up", id: "news3", type: "text" },
           ],
         },
         {
           categoryName: "Sports",
           channels: [
-            { name: "ESPN", id: "sports1", type: "voice", messages: [] },
-            { name: "Fox Sports", id: "sports2", type: "text", messages: [] },
-            { name: "Sky Sports", id: "sports3", type: "voice", messages: [] },
+            { name: "ESPN", id: "sports1", type: "voice" },
+            { name: "Fox Sports", id: "sports2", type: "text" },
+            { name: "Sky Sports", id: "sports3", type: "voice" },
           ],
         },
       ],
     },
-  ],
+    Server3: {
+      categories: [
+        {
+          categoryName: "abhi",
+          channels: [
+            { name: "chess", id: "news1", type: "text" },
+            { name: "stream", id: "news2", type: "text" },
+            { name: "stand up", id: "news3", type: "text" },
+          ],
+        },
+        {
+          categoryName: "hi",
+          channels: [
+            { name: "ESPN", id: "sports1", type: "voice" },
+            { name: "Fox Sports", id: "sports2", type: "text" },
+            { name: "Sky Sports", id: "sports3", type: "voice" },
+          ],
+        },
+      ],
+    },
+    Server4: {
+      categories: [
+        {
+          categoryName: "News",
+          channels: [
+            { name: "chess", id: "news1", type: "text" },
+            { name: "stream", id: "news2", type: "text" },
+            { name: "stand up", id: "news3", type: "text" },
+          ],
+        },
+        {
+          categoryName: "Sports",
+          channels: [
+            { name: "ESPN", id: "sports1", type: "voice" },
+            { name: "Fox Sports", id: "sports2", type: "text" },
+            { name: "Sky Sports", id: "sports3", type: "voice" },
+          ],
+        },
+      ],
+    },
+  },
   serverList: ["SamayRaina", "Server2", "Server3", "Server4", "Server5"],
-  //array of objects is the best
-  //tum bolrhe the :) me nhi yes whi boli
   selectedServer: "SamayRaina",
-  selectedChannel: "news1", // Assuming a default selected channel
-  email: "",
-  password: "",
-  loggedUser: "",
+  selectedChannel: "news1",
+  loggedUser: "Bhavitha",
+  messages: {
+    news1: [
+      { username: "User", text: "Hello" },
+      { username: "User", text: "How are you?" },
+    ],
+    chess: [
+      { username: "User", text: "Hello" },
+      { username: "User", text: "How are you?" },
+    ],
+    stream: [
+      { username: "User", text: "Hello" },
+      { username: "User", text: "standup" },
+    ],
+    ESPN: [
+      { username: "User", text: "Hello" },
+      { username: "User", text: "stream?" },
+    ],
+  },
 };
 
-const serverSlice = createSlice({
+const categorSlice = createSlice({
   name: "servers",
   initialState,
-
   reducers: {
     signup: (state, action) => {
       state.users.push(action.payload);
       const newUser = { username: action.payload.username, servers: [] };
       state.userServerList.push(newUser);
-      //dono me horha abhi
     },
-
     login: (state, action) => {
       const user = state.users.find(
         (user) =>
@@ -111,7 +154,6 @@ const serverSlice = createSlice({
         state.loggedUser = "SamayRaina"; // assuming "SamayRaina" indicates an invalid login
       }
     },
-
     addServer: (state, action) => {
       state.servers.push(action.payload);
     },
@@ -127,41 +169,31 @@ const serverSlice = createSlice({
       state.selectedChannel = action.payload;
     },
     addMessage: (state, action) => {
-      const { serverName, channelId, message } = action.payload;
-      const server = state.servers[serverName];
-      for (let category in server) {
-        const channel = server[category].find(
-          (channel) => channel.id === channelId
-        );
-        if (channel) {
-          channel.messages.push(message);
-          break;
-        }
+      const { channelId, message } = action.payload;
+      if (!state.messages[channelId]) {
+        state.messages[channelId] = [];
       }
-    },
-    login: (state, action) => {
-      const user = state.users.find(
-        (user) =>
-          user.email === action.payload.email &&
-          user.password === action.payload.password
-      );
-      if (user) {
-        state.loggedUser = user.username;
-      } else {
-        state.loggedUser = "SamayRaina"; // assuming "SamayRaina" indicates an invalid login
-      }
+      state.messages[channelId].push({
+        username: state.loggedUser, // Use logged-in user's username
+        text: message,
+      });
     },
   },
 });
 
 export const {
+  signup,
+  login,
   addServer,
   deleteServer,
   setSelectedServer,
   setSelectedChannel,
   addMessage,
-  login,
-  signup,
-} = serverSlice.actions;
+} = categorSlice.actions;
 
-export default serverSlice.reducer;
+export default categorSlice.reducer;
+
+// Example function to generate unique IDs (you may replace this with your implementation)
+const generateUniqueId = () => {
+  return Math.random().toString(36).substr(2, 9);
+};

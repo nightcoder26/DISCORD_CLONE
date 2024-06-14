@@ -1,24 +1,27 @@
 import React from "react";
 import "../componentsCss/serverInfo.css";
-import { useSelector } from "react-redux";
+import { useSelector , useDispatch} from "react-redux";
 import { FaMicrophoneSlash } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { TbHeadphonesOff } from "react-icons/tb";
 import discord_logo from "../assets/discord_icon.png";
+import { setSelectedChannel } from "../features/categorSlice";
+
 function ServerInfo() {
-  //hm sory nhi chiye bas selectedserver chihye usse servers object ka info haina
+  const dispatch = useDispatch();
   const selectedServer = useSelector((state) => state.servers.selectedServer);
-  console.log(selectedServer);
-  const selectedServerInfo = useSelector(
-    (state) =>
-      state.servers.servers.find(
-        (server) => server.serverName === selectedServer
-      ) //fixed
-  );
+  {/*const selectedServerInfo = useSelector((state) =>state.servers.servers.find((server) => server.serverName === selectedServer));*/}
+  const selectedServerInfo = useSelector(state => state.servers.servers[selectedServer]?.categories || [] );
+
+  if (!selectedServerInfo) {
+    return <div>Server not found</div>;
+  }
   //bas whi chihye
-  console.log(selectedServerInfo);
   const username = useSelector((state) => state.servers.loggedUser);
-  console.log(selectedServerInfo);
+
+  const handleChannelClick = (server) => {
+    dispatch(setSelectedChannel(server));
+  }
 
   // const serverList = useSelector((state) => state.servers.serverList);
   return (
@@ -37,6 +40,20 @@ function ServerInfo() {
             </ul>
           </div>
         ))} */}
+        {selectedServerInfo.map(category => (
+        <div key={category.categoryName} className="channelCategory">
+          <p className="categoryName">{category.categoryName}</p>
+          <ul className="channel-list">
+            {category.channels.map(channel => (
+              <li key={channel.id} className={`${channel.type} channelList`} onClick={() => {
+                handleChannelClick(channel);
+              }}>
+                {channel.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
       </div>
       <div className="userInfo">
         <img src={discord_logo} className="user-pfp" />
