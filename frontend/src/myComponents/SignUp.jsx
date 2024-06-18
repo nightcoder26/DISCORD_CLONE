@@ -13,9 +13,6 @@ const SignUp = () => {
   const [emailError, setEmailError] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const store_users = useSelector((state) => state.servers.users);
-  const store_userServerList = useSelector(
-    (state) => state.servers.userServerList
-  );
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -24,7 +21,7 @@ const SignUp = () => {
 
     // Check if email or username is already in use
     const isEmailTaken = store_users.some((user) => user.email === email);
-    const isUsernameTaken = store_userServerList.some(
+    const isUsernameTaken = store_users.some(
       (user) => user.username === username
     );
 

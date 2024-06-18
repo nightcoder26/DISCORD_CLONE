@@ -112,7 +112,7 @@ const initialState = {
   serverList: ["SamayRaina", "Server2", "Server3", "Server4", "Server5"],
   selectedServer: "SamayRaina",
   selectedChannel: "news1",
-  loggedUser: "Bhavitha",
+  loggedUser: "SamayRaina",
   messages: {
     news1: [
       { username: "User", text: "Hello" },
@@ -139,9 +139,10 @@ const categorSlice = createSlice({
   reducers: {
     signup: (state, action) => {
       state.users.push(action.payload);
-      const newUser = { username: action.payload.username, servers: [] };
-      state.userServerList.push(newUser);
+      const newUser = { servers: [] };
+      state.userServerList[action.payload.username] = newUser;
     },
+
     login: (state, action) => {
       const user = state.users.find(
         (user) =>
@@ -193,7 +194,7 @@ export const {
 
 export default categorSlice.reducer;
 
-// Example function to generate unique IDs (you may replace this with your implementation)
-const generateUniqueId = () => {
-  return Math.random().toString(36).substr(2, 9);
-};
+// // Example function to generate unique IDs (you may replace this with your implementation)
+// const generateUniqueId = () => {
+//   return Math.random().toString(36).substr(2, 9);
+// };

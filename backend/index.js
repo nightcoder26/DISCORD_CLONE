@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const bodyParser = require("body-parser");
 const connection = require("./db/connection");
 dotenv.config();
 //kya kha rha
@@ -11,7 +12,8 @@ const bcrypt = require("bcrypt");
 const { User } = require("./models/userModel");
 const userRoute = require("./routes/userRoute");
 const port = process.env.PORT;
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.json());
 app.listen(port, () => {
