@@ -1,25 +1,12 @@
-//suggestion nhi ara
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
-const userSchema = new mongoose.Schema({
-  username: String,
-  email: String,
-  password: String,
-  displayName: String,
-});
+const { Schema } = mongoose;
 
-//krna h yha bcrypt?
-userSchema.pre("save", async function (next) {
-  try {
-    if (this.isModified("password")) {
-      const salt = await bcrypt.genSalt(10);
-      this.password = await bcrypt.hash(this.password, salt);
-    }
-    next();
-  } catch (error) {
-    next(error);
-  }
+const userSchema = new Schema({
+  username: { type: String, unique: true, required: true },
+  password: { type: String, required: true },
+  email: { type: String, unique: true, required: true },
+  displayName: { type: String, required: true },
 });
 
 const User = mongoose.model("User", userSchema);
-module.exports = User;
+module.exports = { User };

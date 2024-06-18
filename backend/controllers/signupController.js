@@ -6,8 +6,18 @@ const signupController = async (req, res) => {
   try {
     const { username, email, password, displayName } = req.body;
     console.log(username, email, password, displayName);
-    const user = await User.create({ username, email, password, displayName });
-
+    // const newUser = new User({ username, email, password, displayName });
+    // const user = await newUser.save();
+    //using insertOne()
+    const user = await new User({
+      username,
+      email,
+      password,
+      displayName,
+    }).save();
+    //kya yar ye itna time leti
+    //okay i'll try tho aj poora
+    //hn
     res.status(201).json({ user });
   } catch (error) {
     //ye create nhi horha tha na user
