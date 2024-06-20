@@ -11,6 +11,8 @@ dotenv.config();
 const bcrypt = require("bcrypt");
 const { User } = require("./models/userModel");
 const userRoute = require("./routes/userRoute");
+const serverRoute = require("./routes/serverRoute");
+const { Server } = require("./models/serverModel");
 const port = process.env.PORT;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -25,5 +27,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/users", userRoute);
+app.use("/server", serverRoute);
 
 //chordete isko for now lets do models
