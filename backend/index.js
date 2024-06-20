@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.json());
 app.listen(port, () => {
-  console.log("Server is running on port 5000");
+  console.log("Server is running on port 6000");
 });
 
 app.get("/", (req, res) => {

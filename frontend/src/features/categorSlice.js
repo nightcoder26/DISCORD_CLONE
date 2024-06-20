@@ -110,10 +110,14 @@ const initialState = {
     },
   },
   serverList: ["SamayRaina", "Server2", "Server3", "Server4", "Server5"],
+
   selectedServer: "SamayRaina",
   selectedChannel: "news1",
   loggedUser: "SamayRaina",
   messages: {
+    //ye dekho msg model me kya kya hona h
+    //channel name and username?
+    //oki
     news1: [
       { username: "User", text: "Hello" },
       { username: "User", text: "How are you?" },

@@ -3,13 +3,10 @@ const { Schema } = mongoose;
 
 const userServerSchema = new Schema({
   username: { type: String, required: true },
-  servers: { type: Array, required: true },
+  servers: { type: [String], required: true, default: [] },
 });
 
 const UserServer = mongoose.model("UserServer", userServerSchema);
 module.exports = { UserServer };
 
-//isko test krna h
-//dinner baad dekhte h
-//jao
-//bye bye
+//local storage
