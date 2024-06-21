@@ -3,6 +3,9 @@ const { Schema } = mongoose;
 
 const messageSchema = new Schema({
   channelName: { type: String, unique: true, required: true },
+  //id manrhe name ko abhi ke lie
+  // 2 kind of add message configure krenge . ek pehli baar ke lie , ek after that
+  // wo abhi krna h?
   messages: [
     {
       username: { type: String, required: true },
@@ -14,6 +17,9 @@ const messageSchema = new Schema({
   //or this
   //kyu
   //oooooooo
+  //next kya thi
+  //isme thode problems h terko dikh rha?
+  //nhi i g
 });
 
 const Message = mongoose.model("Message", messageSchema);

@@ -4,6 +4,7 @@ const { UserServer } = require("../models/userServerModel");
 const { User } = require("../models/userModel");
 const { ServerList } = require("../models/serverListModel");
 const serverController = {
+  //yha bas create server , join server ,
   createServer: async (req, res) => {
     try {
       const { serverName, categories } = req.body;

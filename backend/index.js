@@ -12,7 +12,11 @@ const bcrypt = require("bcrypt");
 const { User } = require("./models/userModel");
 const userRoute = require("./routes/userRoute");
 const serverRoute = require("./routes/serverRoute");
+const messageRoute = require("./routes/messageRoute");
+const channelRoute = require("./routes/channelRoute");
+const { Message } = require("./models/messageModel");
 const { Server } = require("./models/serverModel");
+
 const port = process.env.PORT;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -28,5 +32,7 @@ app.get("/", (req, res) => {
 
 app.use("/users", userRoute);
 app.use("/server", serverRoute);
+app.use("/message", messageRoute);
+app.use("/channel", channelRoute);
 
 //chordete isko for now lets do models
