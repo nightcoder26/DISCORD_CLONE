@@ -15,3 +15,4 @@ const serverSchema = new Schema({
 const Server = mongoose.model("Server", serverSchema);
 module.exports = { Server };
 //pta nhi nashe krri ye ek do baar hui merko pehle
+//CATEGORY KA MODEL BNNI
