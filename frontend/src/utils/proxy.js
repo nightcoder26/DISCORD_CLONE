@@ -1,3 +1,3 @@
-const proxy = "http://localhost:6000/";
+const proxy = "http://localhost:5000";
 
 export default proxy;

@@ -6,7 +6,7 @@ const authController = {
     try {
       const { username, displayName, email, password } = req.body;
       const id = Math.random().toString(36).substr(2, 9);
-
+      console.log(req.body);
       // Hash the password before saving
       const hashedPassword = await bcrypt.hash(password, 10);
 
