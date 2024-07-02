@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../features/categorSlice";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { usePostUserMutation } from "../features/api/apiSlice";
+
 //dekho :sob:
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -15,6 +17,9 @@ const SignUp = () => {
   const store_users = useSelector((state) => state.servers.users);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [postUser, { isLoading }] = usePostUserMutation();
+  const canSave =
+    [username, email, password, displayName].every(Boolean) && !isLoading;
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -39,7 +44,14 @@ const SignUp = () => {
 
     if (!isEmailTaken && !isUsernameTaken) {
       await dispatch(signup({ email, password, displayName, username }));
-      navigate("/");
+      const response = await postUser({
+        email,
+        password,
+        displayName,
+        username,
+      }).unwrap();
+      //chappal
+      //jisse terko maarega
     }
   };
   const handleEmailChange = (e) => {
