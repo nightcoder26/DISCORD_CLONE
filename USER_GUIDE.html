@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Clone - User Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background: #2f3136;
+            color: #dcddde;
+        }
+        .header {
+            text-align: center;
+            background: #5865f2;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .section {
+            background: #36393f;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #5865f2;
+        }
+        .step {
+            background: #2f3136;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 1px solid #4f545c;
+        }
+        .button-example {
+            background: #4f545c;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 5px;
+            font-family: monospace;
+        }
+        .highlight {
+            background: #5865f2;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        .status {
+            background: #43b581;
+            color: white;
+            padding: 10px;
+            border-radius: 6px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .warning {
+            background: #faa61a;
+            color: #2f3136;
+            padding: 10px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        code {
+            background: #2f3136;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .feature-card {
+            background: #2f3136;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #4f545c;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎮 Discord Clone - Complete User Guide</h1>
+        <p>Your fully functional Discord-like chat application with servers, channels, and direct messages!</p>
+    </div>
+
+    <div class="status">
+        ✅ All features are now working! Frontend and backend are running successfully.
+    </div>
+
+    <div class="section">
+        <h2>🚀 Getting Started</h2>
+        
+        <div class="step">
+            <h3>1. Access the Application</h3>
+            <p>Open your browser and go to: <code>http://localhost:3000</code></p>
+            <p>Backend API is running on: <code>http://localhost:5000</code></p>
+        </div>
+
+        <div class="step">
+            <h3>2. Create Your Account</h3>
+            <p>• Click <span class="highlight">Register</span> if you're new</p>
+            <p>• Enter your username, email, and password</p>
+            <p>• The system automatically generates a Discord-like discriminator (e.g., username#1234)</p>
+        </div>
+
+        <div class="step">
+            <h3>3. Login</h3>
+            <p>• Use your email and password to login</p>
+            <p>• You'll be redirected to the main Discord-like interface</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🏠 Main Interface Overview</h2>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>Left Sidebar</h3>
+                <p>• Server list with server icons</p>
+                <p>• Direct Messages section</p>
+                <p>• User settings at bottom</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>Middle Panel</h3>
+                <p>• Channel list for selected server</p>
+                <p>• User list with online status</p>
+                <p>• Voice controls</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>Right Panel</h3>
+                <p>• Chat messages</p>
+                <p>• Message input box</p>
+                <p>• Real-time updates</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🏆 Key Features</h2>
+
+        <div class="step">
+            <h3>📋 Create Your First Server</h3>
+            <p>1. Look for the <span class="button-example">+ button</span> in the server list (left sidebar)</p>
+            <p>2. Click it to open the "Create Server" modal</p>
+            <p>3. Choose a server template or start from scratch:</p>
+            <ul>
+                <li>🎮 Gaming Server</li>
+                <li>🎵 Music & Entertainment</li>
+                <li>💼 Work & Study</li>
+                <li>👥 Friends & Community</li>
+                <li>💻 Programming & Tech</li>
+            </ul>
+            <p>4. Enter your server name and optional description</p>
+            <p>5. Upload a server icon (optional)</p>
+            <p>6. Click <span class="highlight">Create Server</span></p>
+        </div>
+
+        <div class="step">
+            <h3>💬 Create Channels in Your Server</h3>
+            <p>1. Select a server from the left sidebar</p>
+            <p>2. Look for the <span class="button-example">+ button</span> next to "TEXT CHANNELS" in the middle panel</p>
+            <p>3. Click it to open the "Create Channel" modal</p>
+            <p>4. Choose channel type:</p>
+            <ul>
+                <li>📝 Text Channel - For text conversations</li>
+                <li>🔊 Voice Channel - For voice chats</li>
+                <li>📢 Announcement Channel - For important updates</li>
+            </ul>
+            <p>5. Set channel permissions for different roles</p>
+            <p>6. Click <span class="highlight">Create Channel</span></p>
+        </div>
+
+        <div class="step">
+            <h3>📨 Start Direct Messages</h3>
+            <p>1. Click on "Direct Messages" in the left sidebar</p>
+            <p>2. Look for the <span class="button-example">+ button</span> next to "DIRECT MESSAGES"</p>
+            <p>3. Click it to open the "Start a DM" modal</p>
+            <p>4. Search for users by typing their username</p>
+            <p>5. Select a user from the search results</p>
+            <p>6. Click <span class="highlight">Start Conversation</span></p>
+        </div>
+
+        <div class="step">
+            <h3>💾 Join Existing Servers</h3>
+            <p>1. Right-click on the <span class="button-example">+ button</span> in server list</p>
+            <p>2. Select "Join Server"</p>
+            <p>3. Enter the server invitation code</p>
+            <p>4. Click <span class="highlight">Join Server</span></p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🎯 Advanced Features</h2>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>🔐 Role-Based Permissions</h3>
+                <p>• Admins can create channels with specific permissions</p>
+                <p>• Control who can read, write, or manage channels</p>
+                <p>• Different permission levels for different user roles</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>⚡ Real-Time Features</h3>
+                <p>• Live message updates using Socket.io</p>
+                <p>• Typing indicators when users are typing</p>
+                <p>• Online/offline status updates</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>🎨 Modern UI</h3>
+                <p>• Discord-inspired dark theme</p>
+                <p>• Responsive design for all screen sizes</p>
+                <p>• Smooth animations and transitions</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>🔍 Smart Search</h3>
+                <p>• Search for users to start DMs</p>
+                <p>• Find servers and channels quickly</p>
+                <p>• Auto-complete functionality</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🎮 Tips for Best Experience</h2>
+
+        <div class="step">
+            <h3>Getting Around</h3>
+            <p>• <strong>Server Navigation:</strong> Click server icons on the far left to switch servers</p>
+            <p>• <strong>Channel Selection:</strong> Click channel names in the middle panel to join conversations</p>
+            <p>• <strong>Direct Messages:</strong> Click "Direct Messages" to see your private conversations</p>
+        </div>
+
+        <div class="step">
+            <h3>Creating Content</h3>
+            <p>• <strong>Servers:</strong> Perfect for communities, gaming groups, or study groups</p>
+            <p>• <strong>Channels:</strong> Organize topics within servers (general chat, announcements, specific topics)</p>
+            <p>• <strong>DMs:</strong> Private one-on-one conversations</p>
+        </div>
+
+        <div class="step">
+            <h3>Managing Your Experience</h3>
+            <p>• <strong>User Profile:</strong> Click your profile at the bottom left for settings</p>
+            <p>• <strong>Voice Controls:</strong> Mute/unmute microphone and adjust audio</p>
+            <p>• <strong>Logout:</strong> Use the logout button in your user profile section</p>
+        </div>
+    </div>
+
+    <div class="warning">
+        <strong>🔍 Can't Find the Buttons?</strong><br>
+        The + buttons now have enhanced styling with background colors and are more visible. 
+        Look for gray circular buttons with + symbols next to server lists, channel lists, and direct messages.
+        Helper text will guide you when sections are empty.
+    </div>
+
+    <div class="section">
+        <h2>🛠 Technical Details</h2>
+        
+        <div class="step">
+            <h3>Technology Stack</h3>
+            <p>• <strong>Frontend:</strong> React 18 with Redux Toolkit for state management</p>
+            <p>• <strong>Backend:</strong> Node.js with Express and MongoDB</p>
+            <p>• <strong>Real-time:</strong> Socket.io for live updates</p>
+            <p>• <strong>Authentication:</strong> JWT tokens with discriminator system</p>
+            <p>• <strong>Styling:</strong> Styled-components with Discord-inspired theme</p>
+        </div>
+
+        <div class="step">
+            <h3>Current Status</h3>
+            <p>✅ User registration and authentication working</p>
+            <p>✅ Server creation and management functional</p>
+            <p>✅ Channel creation with permissions working</p>
+            <p>✅ Direct messaging system operational</p>
+            <p>✅ Real-time chat and updates active</p>
+            <p>✅ Role-based permission system implemented</p>
+        </div>
+    </div>
+
+    <div class="status">
+        🎉 Congratulations! Your Discord clone is fully functional. Start by creating your first server and inviting friends!
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; padding: 20px; background: #36393f; border-radius: 8px;">
+        <h3>Enjoy Your Discord Clone! 🎮💬</h3>
+        <p>All features are working perfectly. Have fun exploring and chatting!</p>
+    </div>
+</body>
+</html>
